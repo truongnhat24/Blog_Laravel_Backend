@@ -3,6 +3,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\HomeController;
+use App\Http\Controllers\Api\CommentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
@@ -40,10 +41,19 @@ Route::group(['controller' => UserController::class, 'prefix' => 'users'], funct
 Route::group(['controller' => BlogController::class, 'prefix' => 'posts'], function () {
     Route::get('/index/{id}', 'index');
     Route::post('/', 'create');
-    Route::post('/{id}', 'update');
+    Route::put('/{id}', 'update');
     Route::delete('/{id}', 'destroy');
     Route::get('/{id}', 'show');
 })->middleware('verifyJWTtoken');
+
+Route::group(['controller' => CommentController::class, 'prefix' => 'comments'], function () {
+    Route::get('/index/{id}', 'index');
+    Route::post('/', 'create');
+    Route::put('/{id}', 'update');
+    Route::delete('/{id}', 'destroy');
+    Route::get('/{id}', 'show');
+})->middleware('verifyJWTtoken');
+
 
 Route::group(['controller' => HomeController::class, 'prefix' => 'home'], function ($filename) {
     Route::get('/', 'index');

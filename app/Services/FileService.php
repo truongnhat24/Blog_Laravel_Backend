@@ -85,7 +85,11 @@ class FileService
         $image = base64_decode($image);
         $fileName = now()->timestamp . Str::uuid()->getHex() . '.' . $extension;
         Storage::put($folder . '/' . $fileName, $image);
-        //File::copy($folder . '/' . $fileName, 'app/public/images'.'/'.$fileName);
+        //Storage::disk('public')->put($folder . '/' . $fileName, $image);
+
+        $filePath = public_path($folder . '/' . $fileName);
+        File::put($filePath, $image);
+
         return ['path' => "$folder/$fileName"];
     }
 }

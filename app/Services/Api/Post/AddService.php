@@ -30,11 +30,7 @@ class AddService extends BaseService
 
             //dd($blogData);
             $image = $blogData['image'];  // your base64 encoded
-            // $image = str_replace('data:image/png;base64,', '', $image);
-            // $image = str_replace(' ', '+', $image);
-            // $imageName = 'abc.png';
             $path = FileService::uploadImgBase64('images', $image);
-            //dd( base64_decode($image));
             $blogData['image'] = $path['path'];
 
             // if (Arr::has($blogData, 'image')) {

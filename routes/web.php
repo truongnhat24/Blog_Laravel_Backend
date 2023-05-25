@@ -36,6 +36,14 @@ Route::get('/check_inbox', function() {
     return view('users/check_inbox');
 });
 
+Route::get('/reset_password', function() {
+    return view('users/reset_password');
+});
+
+Route::get('/password_back', function() {
+    return view('users/password_back');
+});
+
 Route::get('/', function ()
 {
     return redirect(Route('home'));
