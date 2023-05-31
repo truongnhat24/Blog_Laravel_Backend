@@ -1,11 +1,10 @@
 <?php
 namespace App\Repositories;
 
-use App\Models\User;
+use App\Models\Comment_history;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-class UserRepository extends BaseRepository
+class CommentHisRepository extends BaseRepository
 {
     /**
      * Get the model of User
@@ -14,11 +13,7 @@ class UserRepository extends BaseRepository
      */
     public function getModel()
     {
-        return User::class;
-    }
-
-    public function getUser($id){
-        return User::find($id);
+        return Comment_history::class;
     }
 }
 ?>

@@ -13,6 +13,8 @@ class Comment extends Model
         'user_id',
         'post_id',
         'content',
-        'path'
+        'path',
+        'like_count',
+        'status'
     ];
 }

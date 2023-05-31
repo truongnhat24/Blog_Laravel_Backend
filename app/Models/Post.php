@@ -15,5 +15,7 @@ class Post extends Model
         'content',
         'image',
         'category',
+        'comment_count',
+        'like_count'
     ];
 }

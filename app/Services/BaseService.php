@@ -75,7 +75,6 @@ abstract class BaseService
     {
         $this->setHandler($request->user());
         $this->setData($request->validated());
-
         return $this;
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\LikeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
@@ -32,32 +33,67 @@ Route::group(['controller' => AuthController::class, 'prefix' => 'auth'], functi
     Route::post('/register', 'register');
 });
 
-Route::group(['controller' => UserController::class, 'prefix' => 'users'], function () {
-    Route::post('/login', 'login');
-    Route::post('/{id}', 'update');
-    Route::post('/logout', 'logout');
-})->middleware('verifyJWTtoken');
-
-Route::group(['controller' => BlogController::class, 'prefix' => 'posts'], function () {
-    Route::get('/index/{id}', 'index');
-    Route::post('/', 'create');
-    Route::put('/{id}', 'update');
-    Route::delete('/{id}', 'destroy');
-    Route::get('/{id}', 'show');
-})->middleware('verifyJWTtoken');
-
-Route::group(['controller' => CommentController::class, 'prefix' => 'comments'], function () {
-    Route::get('/index/{id}', 'index');
-    Route::post('/', 'create');
-    Route::put('/{id}', 'update');
-    Route::delete('/{id}', 'destroy');
-    Route::get('/{id}', 'show');
-})->middleware('verifyJWTtoken');
-
-
 Route::group(['controller' => HomeController::class, 'prefix' => 'home'], function ($filename) {
     Route::get('/', 'index');
 });
+
+Route::group(['controller'=> UserController::class, 'prefix' => 'users'], function () {
+    Route::post('/login', 'login');
+});
+
+Route::group(['middleware'=>'verifyJWTtoken'], function() {
+    Route::group(['controller' => UserController::class, 'prefix' => 'users'], function () {
+        Route::post('/{id}', 'update');
+        Route::post('/logout', 'logout');
+        Route::get('/', 'index');
+    });
+    Route::group(['controller' => BlogController::class, 'prefix' => 'posts'], function () {
+        Route::get('/index/{id}', 'index');
+        Route::post('/', 'create');
+        Route::patch('/{id}', 'update');
+        Route::delete('/{id}', 'destroy');
+        Route::get('/{id}', 'show');
+    });
+    Route::group(['controller' => CommentController::class, 'prefix' => 'comments'], function () {
+        Route::get('/index/{id}', 'index');
+        Route::post('/', 'create');
+        Route::patch('/{id}', 'update');
+        Route::delete('/{id}', 'destroy');
+        Route::get('/{id}', 'show');
+    });
+    Route::group(['controller' => LikeController::class, 'prefix' => 'likes'], function(){
+        Route::post('/{type_id}/{type}', 'create');
+    });
+});
+
+// Route::group(['controller' => UserController::class, 'prefix' => 'users'], function () {
+//     Route::post('/login', 'login');
+//     Route::post('/{id}', 'update');
+//     Route::post('/logout', 'logout');
+//     Route::get('/', 'index');
+// })->middleware('verifyJWTtoken');
+
+// Route::group(['controller' => BlogController::class, 'prefix' => 'posts'], function () {
+//     Route::get('/index/{id}', 'index');
+//     Route::post('/', 'create');
+//     Route::patch('/{id}', 'update');
+//     Route::delete('/{id}', 'destroy');
+//     Route::get('/{id}', 'show');
+// })->middleware('verifyJWTtoken');
+
+// Route::group(['controller' => CommentController::class, 'prefix' => 'comments'], function () {
+//     Route::get('/index/{id}', 'index');
+//     Route::post('/', 'create');
+//     Route::patch('/{id}', 'update');
+//     Route::delete('/{id}', 'destroy');
+//     Route::get('/{id}', 'show');
+// })->middleware('verifyJWTtoken');
+
+// Route::group(['controller' => LikeController::class, 'prefix' => 'likes'], function(){
+//     Route::post('/{type_id}/{type}', 'create');
+// })->middleware('verifyJWTtoken');
+
+
 
 // Route::get('/storage/images/{filename}', function ($filename) {
 //     $path = public_path('/images/' . $filename);

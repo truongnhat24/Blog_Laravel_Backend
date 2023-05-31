@@ -25,7 +25,7 @@ class EditRequest extends FormRequest
         return [
             'content' => [
                 'required',
-            ]
+            ],
         ];
     }
 

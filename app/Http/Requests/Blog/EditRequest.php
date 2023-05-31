@@ -29,7 +29,7 @@ class EditRequest extends FormRequest
             'content' => [
                 'required',
             ],
-            'image' => ['required']
+            'image' => [],
         ];
     }
 

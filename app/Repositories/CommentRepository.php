@@ -27,8 +27,15 @@ class CommentRepository extends BaseRepository
         $data = DB::table('comments')
                     ->select('comments.*', 'users.name', 'users.image', 'users.role')
                     ->join('users', 'users.id', '=', 'comments.user_id')
-                    ->where('post_id', '=', $id )->get();
+                    ->where('post_id', '=', $id )
+                    ->orderBy('path', 'asc')
+                    ->get();
         return $data;
+    }
+
+    public function delMulti($path)
+    {
+        return DB::table('comments')->where('path', 'like', $path.'%')->delete();
     }
 }
 ?>

@@ -23,7 +23,6 @@ class AddService extends BaseService
         try 
         {
             $data = $this->commentRepository->getCommentBlog($this->id);
-            dd($data);
             return $this->successResponse('Succeed', []);
         } 
         catch (Exception $e) 

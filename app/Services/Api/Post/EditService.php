@@ -25,17 +25,21 @@ class EditService extends BaseService
     {
         try 
         {
-            $blogData = $this->data;
-            if (Arr::has($blogData, 'image')) {
-                $image = $blogData['image'];
-                $imageUploaded = FileService::upload('images', $this->data['image']);
-                $blogData['image'] = $imageUploaded['path'];
+            $user_id_blog = $this->blogRepository->find($this->id)->user_id;
+            if($this->checkAuththor($user_id_blog)){
+                $blogData = $this->data;
+                if(isset($blogData['image'])){
+                    $image = $blogData['image'];
+                    $path = FileService::uploadImgBase64('images', $image);
+                    $blogData['image'] = $path['path'];
+                }
+                $blogData['category'] = 1;
+                $blogData['slug'] = Str::slug($blogData['title']);
+                $this->blogRepository->update($this->id, $blogData);
+                return $this->successResponse('Succeed', []);
+            } else {
+                return $this->errorResponse('Failed', []);
             }
-            $blogData['user_id'] = Auth::guard('api-member')->id();
-            $blogData['category'] = 1;
-            $blogData['slug'] = Str::slug($blogData['title']);
-            $this->blogRepository->update($this->id, $blogData);
-            return $this->successResponse('Succeed', []);
         }
         catch (Exception $e)
         {
@@ -46,6 +50,14 @@ class EditService extends BaseService
     public function setId($id) {
         $this->id = $id;
         return $this;
+    }
+
+    public function checkAuththor($user_id) {
+        if (Auth::guard('api-member')->id() == $user_id) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ?>

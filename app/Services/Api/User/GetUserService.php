@@ -1,38 +1,38 @@
 <?php 
-namespace App\Services\Blog;
+namespace App\Services\Api\User;
 
 use App\ApiResponse\ApiResponse;
 use App\Services\BaseService;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\BlogRepository;
+use App\Repositories\UserRepository;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 
-class GetBlogByIdBlogService extends BaseService
+class GetUserService extends BaseService
 {
     use ApiResponse;
-    private BlogRepository $blogRepository;
+    private UserRepository $userRepository;
     protected $id;
-    public function __construct(BlogRepository $blogRepository) 
+    public function __construct(UserRepository $userRepository) 
     {
-        $this->blogRepository = $blogRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function handle()
     {
         try
         {
-            $data = $this->blogRepository->find($this->id);
-            return $this->successResponse('Succeed', [$data]);
+            $user = $this->userRepository->getUser(Auth::guard('api-member')->id());
+            return $this->successResponse('Succeed', [$user]);
         }
         catch (Exception $e)
         {
             return $this->errorResponse('Failed', []) ;
         }
     }
-    
+
     public function setId($id) {
         $this->id = $id;
         return $this;

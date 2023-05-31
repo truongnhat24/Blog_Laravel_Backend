@@ -26,9 +26,6 @@ class AddService extends BaseService
         try 
         {       
             $blogData = $this->data;
-
-
-            //dd($blogData);
             $image = $blogData['image'];  // your base64 encoded
             $path = FileService::uploadImgBase64('images', $image);
             $blogData['image'] = $path['path'];

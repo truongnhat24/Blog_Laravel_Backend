@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comment_history extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'comment_id',
+        'content'
+    ];
 }

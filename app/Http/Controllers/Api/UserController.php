@@ -11,10 +11,14 @@ use App\Services\Api\User\EditService;
 use App\Services\Api\Auth\LoginService;
 use Illuminate\Http\RedirectResponse;
 use App\ApiResponse\ApiResponse;
+use App\Services\Api\User\GetUserService;
 
 class UserController extends Controller
 {
     use ApiResponse;
+    public function index() {
+        return resolve(GetUserService::class)->handle();
+    }
     public function update(EditRequest $request, string $id)
     {
         return resolve(EditService::class)->setData($request->all())->setId($id)->handle();

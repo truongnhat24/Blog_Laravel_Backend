@@ -8,6 +8,8 @@ use App\Http\Requests\Comment\AddRequest;
 use App\Http\Requests\Comment\EditRequest;
 use App\Services\Api\Comment\AddService;
 use App\Services\Api\Comment\DelService;
+use App\Services\Api\Comment\EditService;
+use App\Services\Api\Like\GetLikeCommentService;
 use App\Services\Comment\GetCommentService;
 use Illuminate\Http\Request;
 
@@ -17,7 +19,13 @@ class CommentController extends Controller
 
     public function index (string $id)
     {
-        return resolve(GetCommentService::class)->setId($id)->handle();
+        $likeCommentData = resolve(GetLikeCommentService::class)->setId($id)->handle();
+        $commentData = resolve(GetCommentService::class)->setId($id)->handle();
+        return $this->successResponse(
+            "", 
+            [$likeCommentData,
+            $commentData,]
+        ); 
     }
 
     public function create(AddRequest $request)

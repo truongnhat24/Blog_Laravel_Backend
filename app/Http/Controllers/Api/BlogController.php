@@ -15,7 +15,6 @@ use App\Services\Api\Post\DelService;
 use App\Services\Api\Post\EditService;
 use App\Services\User\GetUserService;
 use App\Services\Comment\GetCommentService;
-use App\Services\Like\GetLikeCommentService;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -28,7 +27,6 @@ class BlogController extends Controller
     }
     public function create(AddRequest $request)
     {
-        //dd(123);
         return resolve(AddService::class)->setRequest($request)->handle();
     }
 
@@ -36,7 +34,7 @@ class BlogController extends Controller
     {
         return resolve(EditService::class)->setRequest($request)->setId($id)->handle();
     }
-
+    
     public function destroy(string $id)
     {
         return resolve(DelService::class)->setId($id)->handle();
@@ -44,16 +42,6 @@ class BlogController extends Controller
 
     public function show(string $id)
     {
-        $likeCommentData = resolve(GetLikeCommentService::class)->setBlogId($id)->setUserId(Auth::id())->handle();
-        $blogData = resolve(GetBlogByIdBlogService::class)->setId($id)->handle();
-        $commentData = resolve(GetCommentService::class)->setId($id)->handle();
-        $usersData = resolve(GetUserService::class)->setId(Auth::guard('api-member')->id())->handle();
-        return $this->successResponse(
-            "", 
-            [$likeCommentData, 
-            $blogData, 
-            $commentData,
-            $usersData]
-        ); 
+        return resolve(GetBlogByIdBlogService::class)->setId($id)->handle();
     }
 }
