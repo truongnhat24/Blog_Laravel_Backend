@@ -62,7 +62,7 @@ Route::group(['middleware'=>'verifyJWTtoken'], function() {
         Route::get('/{id}', 'show');
     });
     Route::group(['controller' => LikeController::class, 'prefix' => 'likes'], function(){
-        Route::post('/{type_id}/{type}', 'create');
+        Route::post('/', 'create');
     });
 });
 

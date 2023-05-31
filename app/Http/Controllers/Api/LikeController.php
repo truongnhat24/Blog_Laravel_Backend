@@ -6,6 +6,7 @@ use App\ApiResponse\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Services\Api\Like\AddService;
 use Illuminate\Http\Request;
+use App\Http\Requests\Like\LikeRequest;
 
 class LikeController extends Controller
 {
@@ -16,8 +17,8 @@ class LikeController extends Controller
         return resolve(GetCommentService::class)->setId($id)->handle();
     }
 
-    public function create(string $id, string $type)
+    public function create(LikeRequest $request)
     {
-        return resolve(AddService::class)->setId($id)->setType($type)->handle();
+        return resolve(AddService::class)->setRequest($request)->handle();
     }
 }

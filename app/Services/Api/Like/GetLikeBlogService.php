@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 
-class GetLikeCommentService extends BaseService
+class GetLikeBlogService extends BaseService
 {
     private LikeRepository $likeRepository;
     protected $id;
@@ -20,8 +20,7 @@ class GetLikeCommentService extends BaseService
 
     public function handle()
     {
-        $user_id = Auth::guard('api-member')->id();
-        return $this->likeRepository->getLikeRecords($this->id, $user_id);
+        //return $this->likeRepository->getLikeBlogRecords($this->id, Auth::guard('api-member')->id());
     }
 
     public function setId($id) {

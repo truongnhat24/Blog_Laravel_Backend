@@ -18,7 +18,7 @@ class LikeRepository extends BaseRepository
         return Like::class;
     }
 
-    public function getLikeRecords($post_id) {
+    public function getLikeRecords($post_id, $user_id) {
         // $query = "SELECT likes.*
 		// 			FROM likes 
 		// 			INNER JOIN comments on likes.type_id = comments.id 
@@ -26,7 +26,6 @@ class LikeRepository extends BaseRepository
         // 					IN 
         // 					(SELECT  likes.type_id FROM likes)";
 							
-        $user_id = Auth::guard('api-member')->id();
         $data = DB::table('likes')
                     ->join('comments', 'comments.id', '=', 'likes.type_id')
                     ->where('likes.user_id', '=', $user_id)
@@ -34,6 +33,12 @@ class LikeRepository extends BaseRepository
                     ->whereIn('likes.type_id', function ($query) {
                         $query->select('type_id')->from('likes');
                     })->get();
+        return $data;
+    }
+
+    public function getLikeBlogRecord($user_id, $post_id, $type) {
+        // $data = DB::table('likes')->where('user_id','=', $user_id)->where('type_id','=', $post_id)->where('type','=', $type);
+        $data = $this->getModel()::where('user_id', $user_id)->where('type_id', $post_id)->where('type', $type)->get();
         return $data;
     }
 }
