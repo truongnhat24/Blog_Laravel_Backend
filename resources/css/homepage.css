@@ -1,0 +1,717 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1fac82;
+    --gray-color: #949494;
+    --gray-2-color: #656565;
+    --red-color: #EB4335;
+}
+
+.text-primary-color {
+    color: var(--primary-color);
+}
+
+.text-gray-color {
+    color: var(--gray-color);
+}
+
+.text-gray-2-color {
+    color: var(--gray-2-color);
+}
+
+.text-red-color {
+    color: var(--red-color);
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.mb-28 {
+    margin-bottom: 28px;
+}
+
+.mt-28 {
+    margin-top: 28px;
+}
+
+.mt-22 {
+    margin-top: 22px;
+}
+
+.ms-22 {
+    margin-left: 22px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-18 {
+    margin-bottom: 18px;
+}
+
+.mt-12 {
+    margin-top: 12px;
+}
+
+.mt-6 {
+    margin-top: 6px;
+}
+
+.pb-20 {
+    padding-bottom: 20px;
+}
+
+.fs-22 {
+    font-size: 22px;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-18 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.fs-15 {
+    font-size: 15px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-12 {
+    font-size: 12px;
+}
+
+.lh-20 {
+    line-height: 20px;
+}
+
+.lh-15 {
+    line-height: 15px;
+}
+
+.btn {
+    padding: 8px 44px;
+    border-radius: 10px;
+}
+
+.btn-custom {
+    border: 2px solid var(--primary-color);
+}
+
+.btn-fill {
+    background-color: var(--primary-color);
+}
+
+.img-header {
+    z-index: 0;
+}
+
+.text-image {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.discover {
+    padding: 24px 28px;
+    z-index: 1;
+    background-color: #fff;
+    top: -4rem;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.discover div div p {
+    line-height: 20px;
+}
+
+.discover div div span {
+    color: #949494;
+    line-height: 15px;
+}
+
+.discover .discover-form button {
+    padding: 10px 16px;
+    border: 1px solid #e7e7e7;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+    gap: 24px;
+}
+
+.button-icon {
+    margin-left: 2px;
+}
+
+.modal-destination,
+.modal-explore,
+.modal-tripdate {
+    display: none;
+    position: fixed;
+    inset: 0px;
+    z-index: 25;
+}
+
+.modal-form .modal-contain {
+    background-color: white;
+    max-height: 680px;
+    overflow-y: auto;
+}
+
+.modal-form-group {
+    background-color: white;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    z-index: 10;
+    max-height: 680px;
+}
+
+.modal-contain .form-content,
+.modal-search-contain {
+    padding: 2.375rem 1.875rem;
+}
+
+.modal-search {
+    margin-top: 14px;
+}
+
+.modal-search input::placeholder {
+    font-size: 12px;
+    font-weight: 450;
+    color: #949494;
+}
+
+.modal-search .search-icon {
+    top: 10px;
+    bottom: 10px;
+    left: 16px;
+}
+
+.modal-contain .modal-country {
+    z-index: 11;
+}
+
+.modal-form::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+
+.modal-btn {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 27px 36px 44px;
+    z-index: 12;
+}
+
+.btn-box-shadow {
+    box-shadow: 0px 0px 5px 0px #000000;
+}
+
+.modal-btn button {
+    width: 100%;
+}
+
+.modal-search input{
+    padding: 12px 45px;
+    width: 100% ;
+    border-radius: 10px;
+    border: none;
+    outline: 1px solid #e7e7e7;
+}
+
+.modal-search input:focus {
+    border: none;
+    outline: 1px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.modal-contain input[type=radio] {
+    accent-color: var(--primary-color);
+}
+
+.modal-contain .modal-foot {
+    height: 100px;
+}
+
+.modal-hori {
+    display: block;
+    position: absolute;
+    width: 44px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 20px;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 12;
+} 
+
+.modal-close {
+    display: block;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    padding: 16px;
+    top: -62px;
+    right: 14px;
+    border-radius: 28px;
+    background-color: #696969;
+}
+
+.modal-close:hover {
+    cursor: pointer;
+    background-color: #3b3b3b;
+}
+
+.modal-close .modal-x {
+    line-height: 16px;
+}
+
+/* interest */
+.interest-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 14px 8px;
+}
+
+.interest-tag {
+    padding: 5px 12px;
+    border: 1px solid #e7e7e7;
+    border-radius: 25px;
+    background-color: rgba(247,247,247,0.4);
+    font-size: 15px;
+    gap: 6.5px;
+    color: #656565;
+}
+
+.interest-tag:hover {
+    background-color: rgba(247,247,247,0.8);
+}
+
+.interest-tag .tag-icon svg path {
+    stroke: #656565;
+}
+
+.interest-tag.active {
+    color: var(--primary-color);
+    background-color: #ebfff9;
+    border: 1px solid #AEF8E2;
+}
+
+.interest-tag.active:hover {
+    background-color: #d4fff2;
+}
+
+.interest-tag.active .tag-icon svg path {
+    stroke: #1FAC82;
+}
+
+
+/* calendar  */
+.calendar .flatpickr-calendar {
+    width: 100% !important;
+    padding: 0 !important;
+    border: none;
+    box-shadow: none !important;
+}
+
+.calendar .xdsoft_datetimepicker {
+    width: 100% !important;
+    border: none !important;
+    padding: unset !important;
+}
+
+.calendar .xdsoft_calendar {
+    display: none !important;
+}
+
+.calendar .xdsoft_datetimepicker .xdsoft_label>.xdsoft_select.xdsoft_monthselect {
+    right: 22px !important;
+}
+
+.calendar .xdsoft_datepicker {
+    width: 100% !important;
+    margin-left: unset !important;
+}
+
+.calendar .xdsoft_prev, 
+.calendar .xdsoft_next,
+.calendar .xdsoft_today_button {
+    display: none !important;
+}
+
+.calendar .flatpickr-months .flatpickr-prev-month,
+.calendar .flatpickr-months .flatpickr-next-month,
+.calendar .flatpickr-months {
+    display: none !important;
+}
+
+
+.calendar .xdsoft_month {
+    width: 50% !important;
+    padding-right: 22px !important;
+}
+
+.calendar .xdsoft_year {
+    width: 50% !important;
+    margin-left: unset !important;
+    padding-left: 22px !important;
+}
+
+.calendar .xdsoft_month, 
+.calendar .xdsoft_year {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-size: 16px !important;
+}
+
+.calendar .flatpickr-current-month {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-size: 16px !important;
+}
+
+.calendar .xdsoft_calendar td,
+.calendar .xdsoft_calendar th {
+    display: inline-block;
+    text-align: center !important;
+    border: none !important;
+    height: unset !important;
+    background-color: #fff !important;
+}
+
+.calendar .xdsoft_calendar th {
+    margin-top: 23px !important;
+    font-size: 13px !important;
+}
+
+.calendar .xdsoft_calendar td {
+    margin-top: 26px !important;
+    font-size: 15px !important;
+}
+
+.calendar .xdsoft_calendar .xdsoft_current{
+    background: #fff !important;
+    box-shadow: none !important;
+    color: #000 !important; 
+}
+
+.calendar .prevMonthDay,
+.calendar .nextMonthDay {
+    opacity: 0 !important;
+}
+
+.calendar .xdsoft_datetimepicker .xdsoft_label>.xdsoft_select>div>.xdsoft_option.xdsoft_current,
+.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box>div>div.xdsoft_current {
+    background: var(--primary-color) !important;
+    box-shadow: none !important;
+}
+
+.calendar .xdsoft_datetimepicker .xdsoft_label i {
+    width: 14px !important;
+    height: 8px !important;
+    background-image: url('../../public/images/Union.svg') !important;
+    background-repeat: no-repeat;
+    background-position: unset !important;
+}
+
+.calendar .flatpickr-day,
+.calendar .dayContainer {
+    width: unset !important;
+    max-width: unset !important;
+}
+
+.calendar .flatpickr-days {
+    width: unset !important;
+}
+
+.calendar .flatpickr-current-month {
+    position: unset !important;
+    width: unset !important;
+}
+
+.calendar .flatpickr-current-month .flatpickr-monthDropdown-months {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.flatpickr-day.selected, 
+.flatpickr-day.startRange, 
+.flatpickr-day.endRange, 
+.flatpickr-day.selected.inRange, 
+.flatpickr-day.startRange.inRange, 
+.flatpickr-day.endRange.inRange, 
+.flatpickr-day.selected:focus, 
+.flatpickr-day.startRange:focus, 
+.flatpickr-day.endRange:focus, 
+.flatpickr-day.selected:hover, 
+.flatpickr-day.startRange:hover, 
+.flatpickr-day.endRange:hover, 
+.flatpickr-day.selected.prevMonthDay, 
+.flatpickr-day.startRange.prevMonthDay, 
+.flatpickr-day.endRange.prevMonthDay, 
+.flatpickr-day.selected.nextMonthDay, 
+.flatpickr-day.startRange.nextMonthDay, 
+.flatpickr-day.endRange.nextMonthDay {
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+input[type="time" i] {
+    background: none;
+    display: none;
+}
+
+.time-trip {
+    padding: 9px 24px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    border: 1px solid #e7e7e7;
+}
+
+.time-trip .time-input {
+    width: 40% !important;
+    border: none !important;
+    background-color: #f7f7f7 !important;
+    caret-color: transparent !important;
+}
+
+.time-trip .time-input:focus {
+    outline: none !important;
+}
+
+.time-trip .picktime-icon {
+    margin-left: 12px;
+}
+
+.modal-foot-tripdate {
+    height: 80px;
+}
+
+.modal-form-group.modal-form-group-tripdate {
+    max-height: unset;
+}
+
+.discover .discover-submit button {
+    line-height: 30px;
+}
+
+.discover .discover-submit button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.discover .discover-submit button:hover {
+    background-color: #1d7e61;
+}
+
+/* Horizon */
+hr.horizon-main:not([size]) {
+    height: 6px;
+    background-color: #c5c4c4;
+}
+
+hr.horizon-main  {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Tour guide */
+.tour-guide {
+    padding: 16px 28px 24px;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.tour-guide-head p:last-child {
+    margin-top: 2px;
+}
+
+.tour-guide-member {
+    border-bottom: 1px solid #f4f4f4;
+    margin-bottom: 18px;
+}
+
+.tour-guide-member:last-child {
+    border: none;
+    margin-bottom: unset;
+}
+
+.guide-avatar img {
+    border-radius: 10px;
+}
+
+.guide-chat button {
+    padding: 7px 33px;
+}
+
+/* Promo awaits you */
+
+.promo-awaits {
+    padding: 16px 28px 24px;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.promo-slide .promo-slide-item:not(:last-child),
+.promo-country .promo-country-item:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+.promo-slide .promo-slide-item,
+.promo-country .promo-country-item {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.promo-banner-img {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.promo-country-item div {
+    bottom: 12px;
+    left: 8px;
+    right: 8px;
+}
+
+.fix-base {
+    position: relative;
+    top: -4rem;
+}
+
+.div-pseudo {
+    height: 62px;
+    min-height: 60px;
+}
+
+/* footer */
+footer {
+    padding-top: 18px;
+    padding-bottom: 34px;
+    z-index: 24;
+    border-top: 1px solid #ccc;
+    background-color: white;
+}
+
+footer ul {
+    margin-bottom: unset;
+}
+
+.footer-text {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.active-footer {
+    color: var(--primary-color);
+}
+
+.nav-icon {
+    width: 28px;
+    height: 28px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nav-icon-home {
+    background-image: url('../../public/images/home_nav.svg');
+}
+
+.active-footer .nav-icon-home {
+    background-image: url('../../public/images/home_nav_act.svg');
+}
+
+.nav-icon-map {
+    background-image: url('../../public/images/map_nav.svg');
+}
+
+.active-footer .nav-icon-map {
+    background-image: url('../../public/images/map_nav_act.svg');
+}
+
+.nav-icon-noti {
+    background-image: url('../../public/images/notification_nav.svg');
+}
+
+.active-footer .nav-icon-noti {
+    background-image: url('../../public/images/notification_nav_act.svg');
+}
+
+.nav-icon-profile {
+    background-image: url('../../public/images/profile_circle_nav.svg');
+}
+
+.active-footer .nav-icon-profile {
+    background-image: url('../../public/images/profile_circle_nav_act.svg');
+}
+
+
+/* More guide */
+.more-guide-header {
+    padding: 32px 20px 16px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.filter-guide {
+    gap: 12px;
+}
+
+.select-guide {
+    display: block;
+    padding: 6px 24px 6px 8px;
+    font-size: 12px;
+    line-height: 16px;
+    background-color: #fff;
+    color: var(--gray-color);
+    border-radius: 5px;
+    border: 1px solid #E7E7E7;
+    appearance: none;
+}
+
+.select-guide:focus {
+    outline: none;
+}
+
+.select-contain {
+    position: relative;
+}
+
+.select-contain::before {
+    content: url(../../public/images/arrow-down.svg);
+    position: absolute;
+    right: 8px;
+    top: 5%;
+}
+
+.more-guide-body {
+    padding: 18px 20px 20px;
+}
+
+@media only screen and (max-width: 389.98px){ 
+    
+}

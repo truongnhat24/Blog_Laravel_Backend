@@ -44,6 +44,38 @@ Route::get('/password_back', function() {
     return view('users/password_back');
 });
 
+Route::get('/home_page', function() {
+    return view('homes/home_page');
+});
+
+Route::get('/profile_guide', function() {
+    return view('homes/profile_guide');
+});
+
+Route::get('/order_detail', function() {
+    return view('homes/order_detail');
+});
+
+Route::get('/payment_method', function() {
+    return view('payment/payment_method');
+});
+
+Route::get('/payment_pay', function() {
+    return view('payment/payment_pay');
+});
+
+Route::get('/payment_success', function() {
+    return view('payment/payment_success');
+});
+
+Route::get('/more_guide', function() {
+    return view('homes/more_tourguide');
+});
+
+
+
+
+
 Route::get('/', function ()
 {
     return redirect(Route('home'));
